@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Placeholder colour study">
+  <rect width="800" height="800" fill="#f4efe6"/>
+  <rect x="80" y="80" width="280" height="280" fill="#e24a1b"/>
+  <rect x="400" y="80" width="320" height="180" fill="#2f4a3c"/>
+  <rect x="80" y="400" width="640" height="320" fill="#171512"/>
+  <circle cx="560" cy="560" r="90" fill="#efe8db"/>
+</svg>

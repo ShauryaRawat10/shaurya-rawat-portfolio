@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Placeholder painting study">
+  <rect width="1200" height="800" fill="#efe8db"/>
+  <rect x="70" y="60" width="1060" height="680" fill="#f4efe6"/>
+  <path d="M140 620 C280 480 360 240 520 280 C680 320 700 520 860 470 C980 430 1040 300 1080 220" fill="none" stroke="#e24a1b" stroke-width="28" stroke-linecap="round"/>
+  <circle cx="390" cy="310" r="120" fill="#2f4a3c" fill-opacity="0.22"/>
+  <circle cx="820" cy="390" r="180" fill="#e24a1b" fill-opacity="0.18"/>
+  <rect x="180" y="140" width="220" height="14" fill="#171512" fill-opacity="0.18"/>
+</svg>

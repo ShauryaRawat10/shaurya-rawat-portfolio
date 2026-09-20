@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-label="Placeholder layout study">
+  <rect width="1000" height="700" fill="#efe8db"/>
+  <text x="70" y="140" fill="#171512" font-family="Georgia, serif" font-size="64">layout</text>
+  <rect x="70" y="200" width="420" height="380" fill="#f4efe6" stroke="#ddd4c6"/>
+  <rect x="540" y="200" width="390" height="170" fill="#e24a1b"/>
+  <rect x="540" y="400" width="390" height="180" fill="#2f4a3c"/>
+</svg>
