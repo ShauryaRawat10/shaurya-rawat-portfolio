@@ -1,8 +1,8 @@
 const EMAIL = "shauryarawatrwt10@gmail.com";
 
 const STUDIO_PROFILES = {
-  Instagram: "https://www.instagram.com/",
-  Behance: "https://www.behance.net/",
+  Instagram: "https://www.instagram.com/shaurya_rawat_rwt/",
+  Behance: "https://www.behance.net/shauryarawat",
   GitHub: "https://github.com/ShauryaRawat10",
 };
 
