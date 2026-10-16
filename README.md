@@ -4,11 +4,21 @@ Frontend-only portfolio. No frameworks, no APIs, no build step — drop it on Ve
 
 ## Preview locally
 
-Open `index.html` in a browser, or from this folder:
+From this folder, start a local server:
+
+```powershell
+py -m http.server 5500
+```
+
+Then open [http://localhost:5500](http://localhost:5500) in your browser. Stop the server with `Ctrl+C`.
+
+If you have Node.js installed, this also works:
 
 ```bash
 npx serve .
 ```
+
+You can also open `index.html` directly in a browser, but localhost is closer to how the live site is served.
 
 ## Edit your content
 
