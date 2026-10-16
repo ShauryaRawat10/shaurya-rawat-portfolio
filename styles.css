@@ -509,7 +509,7 @@ h2 {
   border-bottom: 1px solid var(--line);
 }
 
-.timeline li {
+.timeline > li {
   display: grid;
   gap: 0.6rem;
   padding: 1.8rem 0;
@@ -531,10 +531,33 @@ h2 {
   color: var(--muted);
 }
 
+.timeline .client {
+  margin: 0.7rem 0 0;
+  font-size: 1.2rem;
+}
+
+.timeline .client span {
+  color: var(--muted);
+}
+
 .timeline p {
   margin: 0.55rem 0 0;
   color: var(--muted);
-  max-width: 40rem;
+  max-width: 44rem;
+}
+
+.timeline ul {
+  margin: 0.2rem 0 0;
+  padding-left: 1.2rem;
+  color: var(--muted);
+  max-width: 44rem;
+  list-style: disc;
+}
+
+.timeline ul li {
+  display: list-item;
+  padding: 0.12rem 0;
+  border: 0;
 }
 
 .contact {
@@ -641,7 +664,7 @@ textarea {
     grid-template-columns: 0.9fr 1.1fr;
   }
 
-  .timeline li {
+  .timeline > li {
     grid-template-columns: 180px 1fr;
     gap: 1.4rem;
   }
@@ -681,4 +704,20 @@ textarea {
     align-items: center;
     padding-inline: calc((100% - min(1120px, calc(100% - 3rem))) / 2);
   }
+
+    /* Option A: Make the list items sit in a row */
+  ul {
+    display: flex;
+    gap: 15px; /* Adds space between the items */
+    list-style: none; /* Removes the bullet dots if needed */
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 8px; /* Controls the exact gap between lines */
+    margin-top: 0;
+    padding: 0;
+  }
+  
+
 }
