@@ -8,6 +8,26 @@
       name="description"
       content="Senior Consultant in Data & AI Strategy. I build machine learning, GenAI, and data platforms that hold up in finance, payments, and life sciences."
     />
+    <meta name="theme-color" content="#f4efe6" />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Shaurya Rawat — Data Science, ML & GenAI" />
+    <meta
+      property="og:description"
+      content="Senior Consultant in Data & AI Strategy. I build machine learning, GenAI, and data platforms that hold up in finance, payments, and life sciences."
+    />
+    <meta property="og:image" content="./studio/Sketching-cheetah.webp" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Shaurya Rawat — Data Science, ML & GenAI" />
+    <meta
+      name="twitter:description"
+      content="Senior Consultant in Data & AI Strategy. I build machine learning, GenAI, and data platforms that hold up in finance, payments, and life sciences."
+    />
+    <meta name="twitter:image" content="./studio/Sketching-cheetah.webp" />
+
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,26 +35,41 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=Outfit:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=4" />
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
 
     <header class="site-header">
-      <a class="logo" href="#top">shaurya rawat rwt</a>
-      <nav class="nav" aria-label="Primary">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#studio">Studio</a>
-        <a href="#notes">Path</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <a class="btn btn-ink" href="#contact">Say hello</a>
+      <div class="site-header-inner wrap">
+        <a class="logo" href="#top">shaurya rawat rwt</a>
+        <nav class="nav" id="site-nav" aria-label="Primary">
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
+          <a href="#studio">Studio</a>
+          <a href="#notes">Path</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <a class="btn btn-ink" href="#contact">Say hello</a>
+          <button
+            type="button"
+            class="menu-toggle"
+            id="menu-toggle"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="site-nav"
+          >
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+          </button>
+        </div>
+      </div>
     </header>
 
     <main>
       <section id="top" class="hero wrap">
-        <p class="eyebrow">Gurugram · Senior Consultant, Data &amp; AI Strategy</p>
+        <p class="eyebrow">Gurugram · Lead Consultant, Data &amp; AI Strategy · Finance</p>
         <h1>
           Shaurya Rawat builds <br>
           <em>data products</em> for large enterprises.
@@ -96,8 +131,8 @@
           <span class="num">01</span>
           <div>
             <div class="project-title">
-              <h3>Payment intelligence</h3>
-              <span class="tag">EY · Finance</span>
+              <h3>CNP declines recommendation framework</h3>
+              <span class="tag">EY · Mastercard</span>
             </div>
             <p>
               Improving card-not-present approval rates with pattern discovery
@@ -119,11 +154,11 @@
           <span class="num">02</span>
           <div>
             <div class="project-title">
-              <h3>Helix</h3>
+              <h3>Deal Discovery and Research app</h3>
               <span class="tag">EY · Avendus</span>
             </div>
             <p>
-              Multimodal GenAI platform for investment bankers to search,
+              Helix, a multimodal GenAI platform for investment bankers to search,
               analyse, and chat with internal deal documents and external
               financial-data sources — supporting deal discovery and
               investment research.
@@ -147,7 +182,7 @@
           <span class="num">03</span>
           <div>
             <div class="project-title">
-              <h3>Variance analysis</h3>
+              <h3>Multivariate analysis</h3>
               <span class="tag">EY · American Express</span>
             </div>
             <p>
@@ -186,22 +221,46 @@
 
         <a
           class="project"
-          href="https://github.com/ShauryaRawat10/langchain-course"
+          href="https://www.linkedin.com/pulse/revenue-recognition-saas-companies-shaurya-rawat-adlqc/"
           target="_blank"
           rel="noreferrer"
         >
           <span class="num">05</span>
           <div>
             <div class="project-title">
-              <h3>Agentic analysis</h3>
-              <span class="tag">GenAI</span>
+              <h3>Financial Lakehouse platform</h3>
+              <span class="tag">UKG · FP&amp;A</span>
             </div>
             <p>
-              Multivariate analysis platform using LangChain, LangGraph, and
-              CrewAI. Search agents, RAG, reflection loops, and
-              Databricks AgentBricks that stitch data agents with document RAG.
+              Built and scaled an enterprise Databricks Lakehouse across Azure and GCP, developing data models and pipelines 
+              for GL, orders, bookings, invoices, contracts, and revenue recognition.
             </p>
-            <p class="stack">LangChain · LangGraph · CrewAI · Databricks</p>
+            <p class="stack">Azure Databricks · PySpark · Power BI</p>
+          </div>
+          <span class="year">2025</span>
+        </a>
+
+        <a
+          class="project"
+          href=""
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span class="num">06</span>
+          <div>
+            <div class="project-title">
+              <h3>GTM Analytics</h3>
+              <span class="tag">UKG · FP&amp;A</span>
+            </div>
+            <p>
+              Developed ML solutions for GTM teams including churn propensity, customer segmentation, retention, and
+              revenue forecasting using XGBoost, CatBoost, and DBSCAN, operationalized through Databricks.
+            </p>
+            <p>
+              Designed and deployed AgentBricks, a multi-agent LLM framework using Genie Spaces, GPT/Claude, and RAG
+              agents to generate SQL and answer complex domain-specific analytical questions.
+            </p>
+            <p class="stack">AgentBricks · Genie Spaces · Databricks · RAG</p>
           </div>
           <span class="year">2026</span>
         </a>
@@ -212,11 +271,11 @@
           target="_blank"
           rel="noreferrer"
         >
-          <span class="num">06</span>
+          <span class="num">07</span>
           <div>
             <div class="project-title">
-              <h3>Customer 360</h3>
-              <span class="tag">Life sciences</span>
+              <h3>Customer 360 MDM</h3>
+              <span class="tag">Deloitte · Life sciences</span>
             </div>
             <p>
               MDM platforms for Pfizer Inc — customer 360,
@@ -234,11 +293,11 @@
           target="_blank"
           rel="noreferrer"
         >
-          <span class="num">07</span>
+          <span class="num">08</span>
           <div>
             <div class="project-title">
-              <h3>Products 360</h3>
-              <span class="tag">Life sciences</span>
+              <h3>Products 360 MDM</h3>
+              <span class="tag">Cognizant · Life sciences</span>
             </div>
             <p>
               MDM platforms for Bayer AG — customer and product 360,
@@ -265,18 +324,18 @@
               pipeline, and the story for stakeholders agree.
             </p>
             <p>
-              Outside work I make paintings, graphics, sing, vlogging, gyming, acting and modeling. I am completing a Master of
-              Data Science at Deakin University and hold PGP in AI &amp; ML with
+              Outside work, I enjoy painting, graphic design, singing, vlogging, fitness, acting, and modeling. I am completing a Master of
+              Data Science at Deakin University and hold a PGP in AI &amp; ML from
               the University of Texas at Austin and Great Lakes.
             </p>
             <div class="facts">
               <div>
                 <p class="eyebrow">Focus</p>
-                <p class="fact">Data Engineering, ML, GenAI, Finance</p>
+                <p class="fact">Data Engineering, ML, GenAI, Finance, Product Mangement</p>
               </div>
               <div>
                 <p class="eyebrow">Currently</p>
-                <p class="fact">EY · Data &amp; AI Strategy</p>
+                <p class="fact">EY · Data &amp; AI</p>
               </div>
             </div>
           </div>
@@ -319,12 +378,12 @@
             >
           </div>
 
-          <div class="studio-filters" role="tablist" aria-label="Studio categories">
-            <button type="button" class="chip is-on" data-filter="all">All</button>
-            <button type="button" class="chip" data-filter="Painting">Painting</button>
-            <button type="button" class="chip" data-filter="Graphics">Graphics</button>
-            <button type="button" class="chip" data-filter="Modeling">Modeling</button>
-            <button type="button" class="chip" data-filter="Stage">Stage</button>
+          <div class="studio-filters" role="group" aria-label="Studio categories">
+            <button type="button" class="chip is-on" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="chip" data-filter="Painting" aria-pressed="false">Painting</button>
+            <button type="button" class="chip" data-filter="Graphics" aria-pressed="false">Graphics</button>
+            <button type="button" class="chip" data-filter="Modeling" aria-pressed="false">Modeling</button>
+            <button type="button" class="chip" data-filter="Stage" aria-pressed="false">Stage</button>
           </div>
 
           <div class="studio-grid" id="studio-grid"></div>
@@ -332,68 +391,133 @@
       </section>
 
       <dialog id="studio-lightbox" class="lightbox" aria-label="Studio photo">
-        <button type="button" class="lightbox-close" aria-label="Close">Close</button>
-        <img alt="" />
-        <p class="lightbox-caption"></p>
+        <div class="lightbox-content">
+          <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close dialog">Close</button>
+          <button type="button" class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous artwork">‹</button>
+          <img alt="" />
+          <button type="button" class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next artwork">›</button>
+          <p class="lightbox-caption"></p>
+        </div>
       </dialog>
 
       <section id="notes" class="wrap notes">
-        <p class="eyebrow">04 — Path</p>
-        <h2>Where I have been</h2>
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">04 — Path</p>
+            <h2>Where I have been</h2>
+          </div>
+          <div class="path-filters" role="group" aria-label="Path categories">
+            <button type="button" class="chip is-on" data-path-filter="experience" aria-pressed="true">Experience (4)</button>
+            <button type="button" class="chip" data-path-filter="education" aria-pressed="false">Education (4)</button>
+            <button type="button" class="chip" data-path-filter="all" aria-pressed="false">All</button>
+          </div>
+        </div>
+
         <ol class="timeline">
-          <li>
+          <li data-path-type="experience">
             <p class="when">Jan 2026 — Present</p>
             <div>
-              <h3>Senior Consultant 3, Data &amp; AI Strategy <span>— EY</span></h3>
+              <div class="timeline-title-row">
+                <h3>Senior Consultant 3, Data &amp; AI Strategy <span>— EY</span></h3>
+                <span class="path-tag">Experience</span>
+              </div>
 
               <h4 class="client">Avendus <span>— Investment banking</span></h4>
-              <p>
-                  - Contributing to a GenAI application for investment banking,
+              <ul class="role-highlights">
+                <li>
+                  Contributing to a GenAI application for investment banking,
                   enabling search and analysis across unstructured documents
                   (PDFs, PPTs, and Excels) and external financial subscription
                   sources, with citation-backed responses.
+                </li>
+                <li>
                   Supporting AI-driven deal discovery using AWS Bedrock,
                   OpenSearch, Neptune, S3, and EC2.
-              </p>
+                </li>
+              </ul>
 
               <h4 class="client">American Express <span>— Payments</span></h4>
-              <p>
-                  - POC on a multivariate analysis platform using agentic AI
+              <ul class="role-highlights">
+                <li>
+                  POC on a multivariate analysis platform using agentic AI
                   (LangChain, LangGraph, CrewAI) to discover business insights
                   from a multidimensional dataset.
-              </p>
+                </li>
+              </ul>
 
               <h4 class="client">Mastercard <span>— Payments</span></h4>
-                <p>
-                  - Led the development of a Mastercard COMPASS pattern discovery framework to identify hidden drivers of payment authorization declines 
-                  and generate explainable insights across merchant, acquirer, network, and issuer ecosystems. Our recommendation framework was used to improve payment 
+              <ul class="role-highlights">
+                <li>
+                  Led the development of a Mastercard COMPASS pattern discovery framework to identify hidden drivers of payment authorization declines 
+                  and generate explainable insights across merchant, acquirer, network, and issuer ecosystems.
+                </li>
+                <li>
+                  Our recommendation framework was used to improve payment 
                   authorization rates by 5% across the network.
-                </p>
+                </li>
+              </ul>
             </div>
           </li>
-          <li>
+
+          <li data-path-type="education" class="is-hidden">
+            <p class="when">2026 — 2027</p>
+            <div>
+              <div class="timeline-title-row">
+                <h3>Masters in Data Science <span>— Deakin University, Australia</span></h3>
+                <span class="path-tag">Education</span>
+              </div>
+              <p>
+                Advanced artificial intelligence, machine learning research, deep learning algorithms, and high-performance analytical data platforms.
+              </p>
+            </div>
+          </li>
+
+          <li data-path-type="education" class="is-hidden">
+            <p class="when">2025 — 2026</p>
+            <div>
+              <div class="timeline-title-row">
+                <h3>Post Graduate Program in AI and ML <span>— University of Texas at Austin, USA</span></h3>
+                <span class="path-tag">Education</span>
+              </div>
+              <p>
+                Comprehensive curriculum covering Deep Learning, Neural Networks, Computer Vision, Natural Language Processing, and Generative AI applications with McCombs School of Business.
+              </p>
+            </div>
+          </li>
+
+          <li data-path-type="experience">
             <p class="when">Oct 2023 — Dec 2025</p>
             <div>
-              <h3>Senior Data Engineer, Enterprise Data Platforms <span>— UKG</span></h3>
+              <div class="timeline-title-row">
+                <h3>Senior Data Engineer, Enterprise Data Platforms <span>— UKG</span></h3>
+                <span class="path-tag">Experience</span>
+              </div>
               <h4 class="client">Financial Lakehouse <span>— Payments</span></h4>
-                <p>
-                  - Built a financial lakehouse on Azure Databricks including opp-to-cash, GL, AR, AP, Revenue Recognition, enabling revenue analytics and ASC 606 reporting, and decommissioning MDM
+              <ul class="role-highlights">
+                <li>
+                  Built a financial lakehouse on Azure Databricks including opp-to-cash, GL, AR, AP, Revenue Recognition, enabling revenue analytics and ASC 606 reporting, and decommissioning MDM
                   and Oracle ERP into a lakehouse.
-                </p>
-                <h4 class="client">GTM & AI ML <span>— Payments</span></h4>
-                <p>
-                  - Developed ML solutions for GTM teams including churn propensity, customer segmentation, retention, and revenue forecasting using XGBoost, CatBoost, and DBSCAN, operationalized through Databricks
-                </p>
-                <p>
-                  - Designed and deployed AgentBricks, a multi-agent LLM framework using Genie Spaces, GPT/Claude, and RAG agents to generate SQL and answer complex domain-specific analytical questions
-                </p>
-                
+                </li>
+              </ul>
+              <h4 class="client">GTM &amp; AI ML <span>— Payments</span></h4>
+              <ul class="role-highlights">
+                <li>
+                  Developed ML solutions for GTM teams including churn propensity, customer segmentation, retention, and revenue forecasting using XGBoost, CatBoost, and DBSCAN, operationalized through Databricks.
+                </li>
+                <li>
+                  Designed and deployed AgentBricks, a multi-agent LLM framework using Genie Spaces, GPT/Claude, and RAG agents to generate SQL and answer complex domain-specific analytical questions.
+                </li>
+              </ul>
             </div>
           </li>
-          <li>
+
+          <li data-path-type="experience">
             <p class="when">Jan 2022 — Sep 2023</p>
             <div>
-              <h3>Analyst, Data Science &amp; Advanced Analytics <span>— Deloitte</span></h3>
+              <div class="timeline-title-row">
+                <h3>Analyst, Data Science &amp; Advanced Analytics <span>— Deloitte</span></h3>
+                <span class="path-tag">Experience</span>
+              </div>
               <p>
                 Pfizer Customers 360 on Databricks and Snowflake, automated DCR
                 workflows, classification models for test entities, and
@@ -401,13 +525,43 @@
               </p>
             </div>
           </li>
-          <li>
+
+          <li data-path-type="experience">
             <p class="when">Aug 2020 — Dec 2021</p>
             <div>
-              <h3>Programmer Analyst, AI and Analytics <span>— Cognizant</span></h3>
+              <div class="timeline-title-row">
+                <h3>Programmer Analyst, AI and Analytics <span>— Cognizant</span></h3>
+                <span class="path-tag">Experience</span>
+              </div>
               <p>
                 Bayer Product and Customer 360 on Reltio. AWS Glue and DynamoDB
                 ingestion, STTM mappings for 30+ sources across 100+ countries.
+              </p>
+            </div>
+          </li>
+
+          <li data-path-type="education" class="is-hidden">
+            <p class="when">2016 — 2020</p>
+            <div>
+              <div class="timeline-title-row">
+                <h3>BTech in Computer Science and Engineering <span>— DIT University, India</span></h3>
+                <span class="path-tag">Education</span>
+              </div>
+              <p>
+                Core computer science foundations, algorithms, data structures, database management systems, and software engineering.
+              </p>
+            </div>
+          </li>
+
+          <li data-path-type="education" class="is-hidden">
+            <p class="when">2019</p>
+            <div>
+              <div class="timeline-title-row">
+                <h3>Diploma in Graphic Designing &amp; Animation <span>— Dreamzone School of Creative Studies, India</span></h3>
+                <span class="path-tag">Education</span>
+              </div>
+              <p>
+                Part-time certification in digital illustration, visual communication, composition, matte painting, and animation foundations.
               </p>
             </div>
           </li>
@@ -462,9 +616,20 @@
               This form stays on the frontend. It opens your mail app — no
               server required.
             </p>
-            <a class="mail" href="mailto:shauryarawatrwt10@gmail.com"
-              >shauryarawatrwt10@gmail.com</a
-            >
+            <div class="email-wrapper">
+              <a class="mail" id="contact-mail" href="mailto:shauryarawatrwt10@gmail.com"
+                >shauryarawatrwt10@gmail.com</a
+              >
+              <button
+                type="button"
+                class="btn-copy"
+                id="copy-email-btn"
+                aria-label="Copy email address"
+                title="Copy to clipboard"
+              >
+                <span class="copy-text">Copy</span>
+              </button>
+            </div>
           </div>
           <form id="contact-form">
             <label>
@@ -480,6 +645,7 @@
               <textarea name="message" rows="5" required></textarea>
             </label>
             <button class="btn btn-ember" type="submit">Send a note</button>
+            <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
           </form>
         </div>
       </section>
@@ -509,6 +675,10 @@
       </div>
     </footer>
 
-    <script src="./script.js"></script>
+    <button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top" title="Back to top">
+      ↑
+    </button>
+
+    <script src="./script.js?v=4"></script>
   </body>
 </html>

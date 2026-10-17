@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Placeholder stage light">
-  <rect width="1200" height="700" fill="#171512"/>
-  <ellipse cx="600" cy="520" rx="280" ry="40" fill="#e24a1b" fill-opacity="0.2"/>
-  <rect x="575" y="220" width="50" height="260" rx="8" fill="#f4efe6"/>
-  <circle cx="600" cy="200" r="70" fill="#f4efe6"/>
-  <circle cx="600" cy="200" r="28" fill="#171512"/>
-  <path d="M420 120 L780 120" stroke="#e24a1b" stroke-width="4"/>
-</svg>
