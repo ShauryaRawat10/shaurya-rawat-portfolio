@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Placeholder graphic poster">
-  <rect width="800" height="1000" fill="#171512"/>
-  <rect x="48" y="48" width="704" height="904" fill="none" stroke="#f4efe6" stroke-width="2"/>
-  <text x="80" y="180" fill="#f4efe6" font-family="Georgia, serif" font-size="88">STUDIO</text>
-  <text x="80" y="250" fill="#e24a1b" font-family="Georgia, serif" font-size="32" letter-spacing="8">GRAPHICS</text>
-  <circle cx="560" cy="620" r="160" fill="#e24a1b"/>
-  <rect x="80" y="820" width="280" height="8" fill="#f4efe6"/>
-  <rect x="80" y="850" width="180" height="8" fill="#6b645b"/>
-</svg>

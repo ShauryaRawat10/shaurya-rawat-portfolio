@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" role="img" aria-label="Placeholder editorial still">
-  <rect width="900" height="1100" fill="#2f4a3c"/>
-  <rect x="90" y="110" width="720" height="880" fill="#efe8db"/>
-  <ellipse cx="450" cy="430" rx="150" ry="190" fill="#171512" fill-opacity="0.12"/>
-  <rect x="250" y="620" width="400" height="260" fill="#171512" fill-opacity="0.08"/>
-  <line x1="180" y1="180" x2="720" y2="180" stroke="#e24a1b" stroke-width="6"/>
-  <text x="180" y="980" fill="#6b645b" font-family="Georgia, serif" font-size="28">editorial still</text>
-</svg>
