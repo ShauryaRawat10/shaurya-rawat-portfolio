@@ -12,6 +12,8 @@ py -m http.server 5500
 
 Then open [http://localhost:5500](http://localhost:5500) in your browser. Stop the server with `Ctrl+C`.
 
+Run this if not working in terminal: python -m http.server 5500
+
 If you have Node.js installed, this also works:
 
 ```bash
@@ -33,3 +35,8 @@ Name, role, projects, experience, and links live in `index.html`. The contact em
 5. Deploy.
 
 Or drag this folder onto [vercel.com/new](https://vercel.com/new).
+
+
+## Convert images to webp before using:
+1. Check if Pillow is installed: python -m pip install Pillow
+1. python -c "from PIL import Image; Image.open('logos/EY logo.png').save('logos/ey logo.webp','WEBP',quality=88,method=6)" 

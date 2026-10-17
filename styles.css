@@ -969,6 +969,207 @@ textarea {
   transform: translateY(-3px);
 }
 
+/* Featured project cards */
+
+.project-featured .tag {
+  border-color: color-mix(in srgb, var(--ember) 35%, var(--line));
+  background: color-mix(in srgb, var(--ember) 7%, transparent);
+  color: color-mix(in srgb, var(--ember) 75%, var(--ink));
+  padding: 0.25rem 0.75rem;
+}
+
+.project-left-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  border-right: 1px solid var(--line);
+}
+
+.project-left-brand img {
+  width: 70px;
+  height: auto;
+  object-fit: contain;
+}
+
+.project-featured .project-main {
+  min-width: 0;
+  padding: 2rem 1.5rem 2rem 0;
+}
+
+.project-timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr);
+  gap: 1.25rem;
+}
+
+.project-index {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+.project-index::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--line);
+  transform: translateX(-50%);
+}
+
+.project-index span {
+  position: relative;
+  z-index: 2;
+  padding: 0.15rem 0.4rem;
+  background: var(--paper);
+  font-family: var(--display);
+  font-size: 1.6rem;
+  color: var(--ember);
+}
+
+/* Project timeline */
+
+.project-timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.project-index {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 1.8rem;
+}
+
+.project-index::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--line);
+  transform: translateX(-50%);
+}
+
+.project-index span {
+  position: relative;
+  z-index: 2;
+  padding: 0.15rem 0.45rem;
+  background: var(--paper);
+  font-family: var(--display);
+  font-size: 1.6rem;
+  color: var(--ember);
+}
+
+
+/* Featured project card */
+
+.project-featured {
+  position: relative;
+  grid-template-columns: 110px minmax(0, 1fr) 140px;;
+  gap: 0;
+  padding: 0;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.project-featured .project-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.project-left-brand {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2.2rem 1rem 1.5rem;
+  border-right: 1px solid var(--line);
+}
+
+.project-left-brand img {
+  width: 90px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.project-left-brand img.logo-horizontal {
+  width: 125px;
+}
+
+.project-left-brand img.logo-compact {
+  width: 90px;
+}
+
+.project-left-brand img.logo-small {
+  width:50px;
+}
+
+.project-left-brand img.logo-big {
+  width:190px;
+  max-width: 130%;
+}
+
+.project-featured .project-main {
+  min-width: 0;
+  padding: 2rem 2.5rem 2rem 1.75rem;
+}
+
+.project-featured .tag {
+  border-color: color-mix(in srgb, var(--ember) 35%, var(--line));
+  background: color-mix(in srgb, var(--ember) 7%, transparent);
+  color: color-mix(in srgb, var(--ember) 75%, var(--ink));
+  padding: 0.25rem 0.75rem;
+}
+
+.project-right-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem 1.5rem;
+  border-left: 1px solid var(--line);
+}
+
+.project-right-brand img {
+  width: 90px;
+  max-width: 60%;
+  height: auto;
+  object-fit: contain;
+}
+
+.project-right-brand img.logo-big {
+  width: 150px;
+  max-width: 110%;
+}
+
+.project-right-brand img.logo-pfizer {
+  width: 120px;
+  max-width: 80%;
+}
+
+.project-right-brand img.logo-ukg {
+  width: 80px;
+  max-width: 50%;
+}
+
+.project-right-brand .year {
+  margin-top: auto;
+  font-size: 0.85rem;
+  line-height: 1;
+  color: var(--muted);
+}
+
 @media (min-width: 800px) {
   .nav {
     display: flex;
@@ -982,6 +1183,12 @@ textarea {
     grid-template-columns: auto 1fr auto;
     align-items: start;
     padding: 2rem;
+  }
+
+  .project.project-featured {
+    grid-template-columns: 110px minmax(0, 1fr) 140px;
+    align-items: stretch;
+    padding: 0;
   }
 
   .about-grid,
