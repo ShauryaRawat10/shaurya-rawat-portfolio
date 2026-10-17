@@ -192,7 +192,35 @@ body {
 }
 
 .hero {
-  padding: 4.5rem 0 5rem;
+  padding: 2.5rem 0 2rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.75fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-visual {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-right: -2rem;
+}
+
+.hero-visual img {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 115%;
+  max-width: 650px;
+  height: auto;
+  object-fit: contain;
 }
 
 .eyebrow {
@@ -222,7 +250,7 @@ h1 {
   font-size: clamp(3rem, 9vw, 6.4rem);
 }
 
-h1 em {
+h2 em {
   font-style: italic;
   color: var(--ember);
 }
@@ -248,8 +276,9 @@ h2 {
 }
 
 .marquee {
+  grid-column: 1 / -1;
   overflow: hidden;
-  margin-top: 3.5rem;
+  margin-top: 1rem;
   padding: 1rem 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -1007,5 +1036,21 @@ textarea {
     justify-content: space-between;
     align-items: center;
     padding-inline: calc((100% - min(1120px, calc(100% - 3rem))) / 2);
+  }
+}
+
+@media (max-width: 799px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .hero-visual {
+    min-height: auto;
+    order: 2;
+  }
+
+  .hero-visual img {
+    max-width: 420px;
   }
 }
