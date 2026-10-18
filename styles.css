@@ -299,12 +299,14 @@ h2 {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-50%);
   }
 }
 
 .work {
+  margin-top: 2.5rem;
   padding-bottom: 5rem;
 }
 
@@ -550,12 +552,10 @@ h2 {
   gap: 0.6rem;
   align-items: flex-end;
   padding: 2.5rem 1.2rem 1.1rem;
-  background: linear-gradient(
-    to top,
-    rgba(23, 21, 18, 0.88) 0%,
-    rgba(23, 21, 18, 0.4) 60%,
-    transparent 100%
-  );
+  background: linear-gradient(to top,
+      rgba(23, 21, 18, 0.88) 0%,
+      rgba(23, 21, 18, 0.4) 60%,
+      transparent 100%);
   color: var(--paper);
   width: 100%;
   box-sizing: border-box;
@@ -718,14 +718,14 @@ h2 {
   border-bottom: 1px solid var(--line);
 }
 
-.timeline > li {
+.timeline>li {
   display: grid;
   gap: 0.6rem;
   padding: 1.8rem 0;
   border-top: 1px solid var(--line);
 }
 
-.timeline > li.is-hidden {
+.timeline>li.is-hidden {
   display: none !important;
 }
 
@@ -1075,7 +1075,8 @@ textarea {
 
 .project-featured {
   position: relative;
-  grid-template-columns: 110px minmax(0, 1fr) 140px;;
+  grid-template-columns: 110px minmax(0, 1fr) 140px;
+  ;
   gap: 0;
   padding: 0;
   align-items: stretch;
@@ -1113,12 +1114,14 @@ textarea {
 }
 
 .project-left-brand img.logo-small {
-  width:50px;
+  width: 50px;
+  max-width: 90%;
 }
 
 .project-left-brand img.logo-big {
-  width:190px;
+  width: 190px;
   max-width: 130%;
+  transform: translateX(-8px);
 }
 
 .project-featured .project-main {
@@ -1137,14 +1140,21 @@ textarea {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   padding: 2rem 1rem 1.5rem;
   border-left: 1px solid var(--line);
 }
 
+.project-right-brand .company-link {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .project-right-brand img {
-  width: 90px;
-  max-width: 60%;
-  height: auto;
+  display: block;
+  margin: 0 auto;
   object-fit: contain;
 }
 
@@ -1155,12 +1165,30 @@ textarea {
 
 .project-right-brand img.logo-pfizer {
   width: 120px;
-  max-width: 80%;
+  max-width: 85%;
+}
+
+.project-right-brand img.logo-amex {
+  width: 90px;
+  max-width: 70%;
+}
+
+.project-right-brand img.logo-peloton {
+  width: 90px;
+  max-width: 65%;
+}
+
+.project-right-brand img.logo-bayer {
+  width: 90px;
+  max-width: 68%;
 }
 
 .project-right-brand img.logo-ukg {
-  width: 80px;
-  max-width: 50%;
+  width: 70px;
+  max-width: 70%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
 }
 
 .project-right-brand .year {
@@ -1170,94 +1198,383 @@ textarea {
   color: var(--muted);
 }
 
-@media (min-width: 800px) {
-  .nav {
-    display: flex;
-  }
+/* =========================================================
+   SELECTED WORK — LINKS
+   ========================================================= */
 
-  .aside {
-    display: block;
-  }
-
-  .project {
-    grid-template-columns: auto 1fr auto;
-    align-items: start;
-    padding: 2rem;
-  }
-
-  .project.project-featured {
-    grid-template-columns: 110px minmax(0, 1fr) 140px;
-    align-items: stretch;
-    padding: 0;
-  }
-
-  .about-grid,
-  .contact-grid {
-    grid-template-columns: 0.9fr 1.1fr;
-  }
-
-  .timeline > li {
-    grid-template-columns: 180px 1fr;
-    gap: 1.4rem;
-  }
-
-  .timeline ul li,
-  .timeline .role-highlights li {
-    grid-template-columns: none !important;
-    display: list-item !important;
-    border: none !important;
-    border-top: none !important;
-  }
-
-  .studio-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.25rem;
-  }
-  
-  .studio-card {
-    min-height: 0;
-    aspect-ratio: 4 / 5;
-  }
-  
-  .studio-card img {
-    width: 100%;
-    height: 100%;
-    min-height: 0;
-    object-fit: cover;
-    object-position: center;
-  }
-  
-  /* Keep every artwork the same size */
-  .studio-card.span-wide,
-  .studio-card.span-tall,
-  .studio-card.span-mid,
-  .studio-card.span-sq,
-  .studio-card.span-half {
-    grid-column: span 1;
-    grid-row: span 1;
-  }
-
-  .site-footer {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding-inline: calc((100% - min(1120px, calc(100% - 3rem))) / 2);
-  }
+.project-details-link,
+.project-details-link:visited,
+.project-details-link:hover,
+.project-details-link:active {
+  color: var(--ink) !important;
+  text-decoration: none !important;
 }
 
-@media (max-width: 799px) {
+.project-right-brand .year {
+  color: var(--muted) !important;
+  text-decoration: none !important;
+}
+
+
+/* ================================
+   COMPANY MARQUEE
+   ================================ */
+
+.company-marquee {
+  width: min(1120px, calc(100% - 3rem));
+  margin-inline: auto;
+  padding: 1.5rem 0 1.75rem;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.company-marquee-label {
+  margin: 0 0 1rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.company-marquee-track-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Fade the logos at both edges */
+.company-marquee-track-wrap::before,
+.company-marquee-track-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 90px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+.company-marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 0rem;
+}
+
+.company-logo {
+  flex: 0 0 auto;
+  width: 105px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.company-logo img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 34px;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.62;
+  transition:
+    opacity 0.25s ease,
+    filter 0.25s ease;
+}
+
+.company-logo img[src*="ukg-transparent"] {
+  max-height: 24px;
+  max-width: 85px;
+}
+
+.company-logo img[src*="cognizant-transparent"] {
+  max-height: 85px;
+  max-width: 400px;
+}
+
+.company-logo:hover img {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+
+/* =========================================================
+   MOBILE FIX
+   Fixes:
+   1. Path section on mobile
+   2. Project cards showing too many logos
+   3. Desktop 3-column project layout leaking into mobile
+   4. Mobile header overflow
+   ========================================================= */
+
+/* =========================================================
+   MOBILE RESPONSIVE FIX
+   ========================================================= */
+
+@media screen and (max-width: 799px) {
+
+  /* -------------------------------------------------------
+       HERO
+       ------------------------------------------------------- */
+
   .hero {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: 100% !important;
+    gap: 2rem !important;
+    padding: 2rem 0 2rem !important;
+  }
+
+  .hero-copy {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
   }
 
   .hero-visual {
-    min-height: auto;
-    order: 2;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: auto !important;
+    margin-right: 0 !important;
+    order: 2 !important;
   }
 
   .hero-visual img {
-    max-width: 420px;
+    width: 100% !important;
+    max-width: 420px !important;
+    height: auto !important;
+  }
+
+  /* Hero headline */
+
+  .hero h1 {
+    width: 100% !important;
+    max-width: 16ch !important;
+    font-size: clamp(3rem, 15vw, 4.5rem) !important;
+    line-height: 0.95 !important;
+  }
+
+  .lede {
+    width: 100% !important;
+    max-width: 36rem !important;
+    font-size: 1.05rem !important;
+    line-height: 1.55 !important;
+  }
+
+
+  /* -------------------------------------------------------
+       PROJECT CARDS
+       ------------------------------------------------------- */
+
+  .project-timeline-item {
+    display: grid !important;
+    grid-template-columns: 36px minmax(0, 1fr) !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .project-timeline-item>.project.project-featured {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  /* Hide desktop company-logo columns */
+
+  .project-left-brand,
+  .project-right-brand {
+    display: none !important;
+  }
+
+  /* Project content */
+
+  .project-featured .project-main {
+    display: block !important;
+
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+
+    box-sizing: border-box !important;
+
+    padding: 1.25rem 1.1rem 1.4rem !important;
+  }
+
+  .project-featured .project-title {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .project-featured .project-title h3 {
+    display: block !important;
+
+    width: 100% !important;
+    max-width: none !important;
+
+    margin: 0 0 0.75rem !important;
+
+    font-size: clamp(1.5rem, 7vw, 2rem) !important;
+    line-height: 1.08 !important;
+  }
+
+  .project-featured .tag {
+    display: inline-block !important;
+    max-width: 100% !important;
+  }
+
+  .project-featured .project-main p {
+    width: 100% !important;
+    max-width: none !important;
+
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+
+    overflow-wrap: break-word !important;
+  }
+
+
+  /* -------------------------------------------------------
+       PATH
+       ------------------------------------------------------- */
+
+  .notes .section-head {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    align-items: start !important;
+  }
+
+  .path-filters {
+    width: 100% !important;
+
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+
+    gap: 0.5rem !important;
+  }
+
+  .path-filters .chip {
+    width: 100% !important;
+    min-width: 0 !important;
+    text-align: center !important;
+  }
+
+  .timeline>li {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+    padding: 1.5rem 0 !important;
+  }
+
+
+  /* -------------------------------------------------------
+       HEADER
+       ------------------------------------------------------- */
+
+  .site-header-inner {
+    width: 100% !important;
+    gap: 0.5rem !important;
+  }
+
+  .site-header .btn-ink {
+    display: none !important;
+  }
+
+
+  /* -------------------------------------------------------
+       GENERAL MOBILE SAFETY
+       ------------------------------------------------------- */
+
+  img {
+    max-width: 100%;
+  }
+
+  .mail,
+  .writing-list a {
+    overflow-wrap: anywhere;
+  }
+
+  .company-marquee {
+    padding: 1.25rem 0 1.5rem;
+  }
+
+  .company-marquee-label {
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .company-marquee-track {
+    gap: 3rem;
+    animation-duration: 25s;
+  }
+
+  .company-logo {
+    width: 85px;
+    height: 36px;
+  }
+
+  .company-logo img {
+    max-height: 28px;
+  }
+
+  .company-marquee-track-wrap::before,
+  .company-marquee-track-wrap::after {
+    width: 45px;
+  }
+
+}
+
+
+/* =========================================================
+     SMALL PHONES
+     ========================================================= */
+
+@media screen and (max-width: 420px) {
+
+  .hero {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+  }
+
+  .hero h1 {
+    max-width: 100% !important;
+    font-size: clamp(2.8rem, 14vw, 4rem) !important;
+  }
+
+  .path-filters {
+    grid-template-columns: 1fr !important;
+  }
+
+  .project-timeline-item {
+    grid-template-columns: 30px minmax(0, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .project-featured .project-main {
+    padding: 1.1rem 1rem 1.25rem !important;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .site-header .nav {
+    display: flex !important;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .site-header .menu-toggle {
+    display: none !important;
   }
 }
