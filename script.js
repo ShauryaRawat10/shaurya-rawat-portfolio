@@ -237,33 +237,76 @@ if (copyEmailBtn) {
         if (copyText) copyText.textContent = "Copy";
       }, 2400);
     } catch {
-      window.location.href = `mailto:${EMAIL}`;
+      if (copyText) copyText.textContent = "Copy failed";
+      setTimeout(() => {
+        if (copyText) copyText.textContent = "Copy";
+      }, 2400);
     }
   });
 }
 
-// Contact form submission
+// Contact form submission via Formspree
 const contactForm = document.getElementById("contact-form");
 const formStatus = document.getElementById("form-status");
+const contactSubmit = document.getElementById("contact-submit");
 
 if (contactForm) {
-  contactForm.addEventListener("submit", (event) => {
+  contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const form = new FormData(event.currentTarget);
-    const name = form.get("name") || "";
-    const email = form.get("email") || "";
-    const message = form.get("message") || "";
-
-    const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
-    const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
-
-    if (formStatus) {
-      formStatus.textContent = "Opening your email app... You can also copy the email directly above.";
-      formStatus.classList.add("is-visible");
+    if (contactSubmit) {
+      contactSubmit.disabled = true;
+      contactSubmit.textContent = "Sending...";
     }
 
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+    if (formStatus) {
+      formStatus.textContent = "";
+      formStatus.classList.remove("is-visible");
+    }
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: "POST",
+        body: new FormData(contactForm),
+        headers: {
+          Accept: "application/json"
+        }
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (response.ok) {
+        contactForm.reset();
+
+        if (formStatus) {
+          formStatus.textContent =
+            "Message sent successfully. Thank you!";
+          formStatus.classList.add("is-visible");
+        }
+      } else {
+        const errorMessage =
+          data?.errors?.map(error => error.message).join(", ") ||
+          "Something went wrong. Please try again.";
+
+        if (formStatus) {
+          formStatus.textContent = errorMessage;
+          formStatus.classList.add("is-visible");
+        }
+      }
+
+    } catch (error) {
+      if (formStatus) {
+        formStatus.textContent =
+          "Unable to send the message right now. Please try again.";
+        formStatus.classList.add("is-visible");
+      }
+
+    } finally {
+      if (contactSubmit) {
+        contactSubmit.disabled = false;
+        contactSubmit.textContent = "Send a note";
+      }
+    }
   });
 }
 

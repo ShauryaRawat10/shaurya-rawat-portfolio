@@ -39,4 +39,8 @@ Or drag this folder onto [vercel.com/new](https://vercel.com/new).
 
 ## Convert images to webp before using:
 1. Check if Pillow is installed: python -m pip install Pillow
-1. python -c "from PIL import Image; Image.open('logos/EY logo.png').save('logos/ey logo.webp','WEBP',quality=88,method=6)" 
+2. python -c "from PIL import Image; Image.open('logos/EY logo.png').save('logos/ey logo.webp','WEBP',quality=88,method=6)" 
+
+
+## Contact Message
+1. Use formsfree app for mail integration
