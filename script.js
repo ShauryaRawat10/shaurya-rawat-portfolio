@@ -330,25 +330,75 @@ if (backToTopBtn) {
   });
 }
 
-// Path category filters (All vs Experience vs Education)
+// Path — snake career board + selected-work hover cards
 const pathChips = document.querySelectorAll(".path-filters .chip");
-const pathItems = document.querySelectorAll(".timeline > li[data-path-type]");
+const careerSnake = document.getElementById("career-snake");
+const educationPath = document.getElementById("education-path");
+const pathNodes = document.querySelectorAll(".path-node[data-company]");
 
-function setPathFilter(filter) {
-  pathItems.forEach((item) => {
-    if (filter === "all" || item.dataset.pathType === filter) {
-      item.classList.remove("is-hidden");
-    } else {
-      item.classList.add("is-hidden");
-    }
+function getSelectedWorkForCompany(company) {
+  if (!company) return [];
+
+  return [...document.querySelectorAll(".project-timeline-item .project-featured")].filter((project) => {
+    const employerLogo = project.querySelector(".project-left-brand img");
+    return employerLogo && employerLogo.alt.trim().toLowerCase() === company.toLowerCase();
   });
 }
 
-if (pathChips.length && pathItems.length) {
+function buildPathProjectCard(project) {
+  const link = project.querySelector(".project-details-link");
+  const title = link?.textContent.trim() || "Selected work";
+  const href = link?.getAttribute("href") || "#work";
+  const tag = project.querySelector(".tag")?.textContent.trim() || "";
+  const logo = project.querySelector(".project-right-brand img") || project.querySelector(".project-left-brand img");
+  const logoSrc = logo?.getAttribute("src") || "";
+  const clientLogoAlt = logo?.getAttribute("alt") || "";
+
+  const card = document.createElement("a");
+  card.className = "path-project-card";
+  card.href = href;
+  card.innerHTML = `
+    <img class="path-project-logo" src="${logoSrc}" alt="${clientLogoAlt}">
+    <span class="path-project-copy">
+      <strong>${title}</strong>
+      <span>${tag}</span>
+    </span>
+    <span class="path-project-arrow" aria-hidden="true">↗</span>
+  `;
+  return card;
+}
+
+function populatePathWorkCards() {
+  pathNodes.forEach((node) => {
+    const company = node.dataset.company;
+    const popover = node.querySelector(".path-work-popover");
+    if (!popover) return;
+
+    popover.innerHTML = "";
+    const projects = getSelectedWorkForCompany(company);
+
+    if (!projects.length) {
+      popover.innerHTML = `<div class="path-empty">No selected-work cards linked to ${company} yet.</div>`;
+      return;
+    }
+
+    projects.forEach((project) => popover.appendChild(buildPathProjectCard(project)));
+  });
+}
+
+function setPathFilter(filter) {
+  const showExperience = filter === "experience" || filter === "all";
+  const showEducation = filter === "education" || filter === "all";
+
+  if (careerSnake) careerSnake.hidden = !showExperience;
+  if (educationPath) educationPath.hidden = !showEducation;
+}
+
+if (pathChips.length) {
+  populatePathWorkCards();
+
   const activeChip = document.querySelector(".path-filters .chip.is-on");
-  if (activeChip) {
-    setPathFilter(activeChip.dataset.pathFilter);
-  }
+  if (activeChip) setPathFilter(activeChip.dataset.pathFilter);
 
   pathChips.forEach((chip) => {
     chip.addEventListener("click", () => {
@@ -359,8 +409,137 @@ if (pathChips.length && pathItems.length) {
 
       chip.classList.add("is-on");
       chip.setAttribute("aria-pressed", "true");
-
       setPathFilter(chip.dataset.pathFilter);
     });
   });
 }
+
+// Live experience counter — calculated from the start of the first role to today.
+const experienceTotalValue = document.getElementById("experience-total-value");
+const experienceStartNode = document.querySelector('.path-node[data-start]');
+
+function getLiveExperienceYears() {
+  const startValue = experienceStartNode?.dataset.start || "2020-08";
+  const [year, month] = startValue.split("-").map(Number);
+  const startDate = new Date(year, (month || 1) - 1, 1);
+  const now = new Date();
+  const millisecondsPerYear = 365.2425 * 24 * 60 * 60 * 1000;
+  return Math.max(0, (now - startDate) / millisecondsPerYear);
+}
+
+function animateExperienceTotal() {
+  if (!experienceTotalValue) return;
+
+  const target = getLiveExperienceYears();
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reducedMotion) {
+    experienceTotalValue.textContent = target.toFixed(1);
+    return;
+  }
+
+  const duration = 1100;
+  const startTime = performance.now();
+
+  const tick = (now) => {
+    const progress = Math.min(1, (now - startTime) / duration);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    experienceTotalValue.textContent = (target * eased).toFixed(1);
+
+    if (progress < 1) requestAnimationFrame(tick);
+  };
+
+  requestAnimationFrame(tick);
+}
+
+if (experienceTotalValue) {
+  const counterSection = document.querySelector("#notes");
+  if (counterSection && "IntersectionObserver" in window) {
+    let hasAnimated = false;
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some(entry => entry.isIntersecting) && !hasAnimated) {
+        hasAnimated = true;
+        animateExperienceTotal();
+        observer.disconnect();
+      }
+    }, { threshold: 0.25 });
+    observer.observe(counterSection);
+  } else {
+    animateExperienceTotal();
+  }
+}
+
+// Desktop interaction: the nearest company responds continuously to cursor proximity.
+// The effect is intentionally subtle: cards stay quiet at rest and become larger as
+// the pointer enters their local field, without rearranging the composition.
+if (careerSnake && pathNodes.length) {
+  const supportsPointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  let pointerFrame = null;
+
+  const resetPathProximity = () => {
+    pathNodes.forEach((node) => {
+      const card = node.querySelector(".path-node-card");
+      if (!card) return;
+      card.style.setProperty("--proximity", "0");
+      card.style.setProperty("--card-x", "0px");
+      card.style.setProperty("--card-y", "0px");
+    });
+  };
+
+  const updatePathProximity = (event) => {
+    if (!supportsPointer) return;
+    if (pointerFrame) cancelAnimationFrame(pointerFrame);
+
+    pointerFrame = requestAnimationFrame(() => {
+      const boardRect = careerSnake.getBoundingClientRect();
+      const px = event.clientX;
+      const py = event.clientY;
+      const influenceRadius = Math.max(230, Math.min(310, boardRect.width * 0.32));
+
+      pathNodes.forEach((node) => {
+        const card = node.querySelector(".path-node-card");
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = px - cx;
+        const dy = py - cy;
+        const distance = Math.hypot(dx, dy);
+        const proximity = Math.max(0, Math.min(1, 1 - distance / influenceRadius));
+
+        // Only a tiny magnetic nudge; scale remains the dominant effect.
+        const pull = proximity * 5;
+        const x = distance ? (dx / distance) * pull : 0;
+        const y = distance ? (dy / distance) * pull : 0;
+
+        card.style.setProperty("--proximity", proximity.toFixed(3));
+        card.style.setProperty("--card-x", `${x.toFixed(2)}px`);
+        card.style.setProperty("--card-y", `${y.toFixed(2)}px`);
+      });
+
+      pointerFrame = null;
+    });
+  };
+
+  careerSnake.addEventListener("pointermove", updatePathProximity, { passive: true });
+  careerSnake.addEventListener("pointerleave", resetPathProximity, { passive: true });
+}
+
+// On touch/mobile, tap a company node to reveal its work cards.
+pathNodes.forEach((node) => {
+  node.addEventListener("click", (event) => {
+    if (window.matchMedia("(max-width: 600px)").matches && !event.target.closest("a")) {
+      pathNodes.forEach((other) => {
+        if (other !== node) other.classList.remove("is-active");
+      });
+      node.classList.toggle("is-active");
+    }
+  });
+
+  node.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      node.classList.toggle("is-active");
+    }
+  });
+});

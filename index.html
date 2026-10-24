@@ -29,7 +29,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=Outfit:wght@300;400;500;600&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css?v=5" />
+  <link rel="stylesheet" href="./styles.css?v=6" />
 </head>
 
 <body>
@@ -772,13 +772,13 @@
       </div>
 
       <!-- =========================================
-           PROJECT 08
+           PROJECT 09
            ========================================= -->
 
       <div class="project-timeline-item">
 
         <div class="project-index">
-          <span>08</span>
+          <span>09</span>
         </div>
 
         <div class="project project-featured">
@@ -927,175 +927,135 @@
           <h2>Where I have been</h2>
         </div>
         <div class="path-filters" role="group" aria-label="Path categories">
-          <button type="button" class="chip is-on" data-path-filter="experience" aria-pressed="true">Experience
-            (4)</button>
+          <button type="button" class="chip" data-path-filter="experience" aria-pressed="false">Experience (4)</button>
           <button type="button" class="chip" data-path-filter="education" aria-pressed="false">Education (4)</button>
-          <button type="button" class="chip" data-path-filter="all" aria-pressed="false">All</button>
+          <button type="button" class="chip is-on" data-path-filter="all" aria-pressed="true">All</button>
         </div>
       </div>
 
-      <ol class="timeline">
-        <li data-path-type="experience">
-          <p class="when">Jan 2026 — Present</p>
-          <div>
-            <div class="timeline-title-row">
-              <h3>Senior Consultant 3, Data &amp; AI Strategy <span>— EY</span></h3>
-              <span class="path-tag">Experience</span>
+      <p class="path-intro">Follow the path, hover a company, and the work I shipped there appears beside it.</p>
+
+      <div class="career-board" aria-label="Career path">
+        <div class="career-snake" id="career-snake">
+          <div class="career-spine" aria-hidden="true">
+            <div class="experience-total">
+              <strong id="experience-total-value">0.0</strong>
+              <span>YEARS OF EXPERIENCE</span>
+              <small>AND COUNTING</small>
             </div>
-
-            <h4 class="client">Avendus <span>— Investment banking</span></h4>
-            <ul class="role-highlights">
-              <li>
-                Contributing to a GenAI application for investment banking,
-                enabling search and analysis across unstructured documents
-                (PDFs, PPTs, and Excels) and external financial subscription
-                sources, with citation-backed responses.
-              </li>
-              <li>
-                Supporting AI-driven deal discovery using AWS Bedrock,
-                OpenSearch, Neptune, S3, and EC2.
-              </li>
-            </ul>
-
-            <h4 class="client">American Express <span>— Payments</span></h4>
-            <ul class="role-highlights">
-              <li>
-                POC on a multivariate analysis platform using agentic AI
-                (LangChain, LangGraph, CrewAI) to discover business insights
-                from a multidimensional dataset.
-              </li>
-            </ul>
-
-            <h4 class="client">Mastercard <span>— Payments</span></h4>
-            <ul class="role-highlights">
-              <li>
-                Led the development of a Mastercard COMPASS pattern discovery framework to identify hidden drivers of
-                payment authorization declines
-                and generate explainable insights across merchant, acquirer, network, and issuer ecosystems.
-              </li>
-              <li>
-                Our recommendation framework was used to improve payment
-                authorization rates by 5% across the network.
-              </li>
-            </ul>
+            <div class="spine-line"></div>
+            <div class="spine-end"></div>
           </div>
-        </li>
 
-        <li data-path-type="education" class="is-hidden">
-          <p class="when">2026 — 2027</p>
-          <div>
-            <div class="timeline-title-row">
-              <h3>Masters in Data Science <span>— Deakin University, Australia</span></h3>
-              <span class="path-tag">Education</span>
+          <div class="path-node path-node-ey" data-path-type="experience" data-company="EY" data-start="2020-08" data-end="present" data-current="true" tabindex="0">
+            <div class="path-connector" aria-hidden="true"><span></span></div>
+            <div class="path-meta">
+              <span class="path-step">01</span>
+              <span class="path-date">JAN 2026 — PRESENT</span>
             </div>
-            <p>
-              Advanced artificial intelligence, machine learning research, deep learning algorithms, and
-              high-performance analytical data platforms.
-            </p>
-          </div>
-        </li>
-
-        <li data-path-type="education" class="is-hidden">
-          <p class="when">2025 — 2026</p>
-          <div>
-            <div class="timeline-title-row">
-              <h3>Post Graduate Program in AI and ML <span>— University of Texas at Austin, USA</span></h3>
-              <span class="path-tag">Education</span>
+            <div class="path-node-card">
+              <div class="path-company-logo-wrap">
+                <img class="path-company-logo" src="./logos/ey-transparent.webp" alt="EY">
+                <span class="path-current">CURRENT</span>
+              </div>
+              <div class="path-card-dates" aria-label="Employment dates">
+                <span>JAN 2026</span><span>PRESENT</span>
+              </div>
+              <small>Senior Consultant · Data &amp; AI Strategy</small>
             </div>
-            <p>
-              Comprehensive curriculum covering Deep Learning, Neural Networks, Computer Vision, Natural Language
-              Processing, and Generative AI applications with McCombs School of Business.
-            </p>
+            <div class="path-work-popover" aria-hidden="true"></div>
           </div>
-        </li>
 
-        <li data-path-type="experience">
-          <p class="when">Oct 2023 — Dec 2025</p>
-          <div>
-            <div class="timeline-title-row">
-              <h3>Senior Data Engineer, Enterprise Data Platforms <span>— UKG</span></h3>
-              <span class="path-tag">Experience</span>
+          <div class="path-node path-node-ukg" data-path-type="experience" data-company="UKG" data-start="2023-10" data-end="2025-12" tabindex="0">
+            <div class="path-connector" aria-hidden="true"><span></span></div>
+            <div class="path-meta">
+              <span class="path-step">02</span>
+              <span class="path-date">OCT 2023 — DEC 2025</span>
             </div>
-            <h4 class="client">Financial Lakehouse <span>— Payments</span></h4>
-            <ul class="role-highlights">
-              <li>
-                Built a financial lakehouse on Azure Databricks including opp-to-cash, GL, AR, AP, Revenue Recognition,
-                enabling revenue analytics and ASC 606 reporting, and decommissioning MDM
-                and Oracle ERP into a lakehouse.
-              </li>
-            </ul>
-            <h4 class="client">GTM &amp; AI ML <span>— Payments</span></h4>
-            <ul class="role-highlights">
-              <li>
-                Developed ML solutions for GTM teams including churn propensity, customer segmentation, retention, and
-                revenue forecasting using XGBoost, CatBoost, and DBSCAN, operationalized through Databricks.
-              </li>
-              <li>
-                Designed and deployed AgentBricks, a multi-agent LLM framework using Genie Spaces, GPT/Claude, and RAG
-                agents to generate SQL and answer complex domain-specific analytical questions.
-              </li>
-            </ul>
+            <div class="path-node-card">
+              <div class="path-company-logo-wrap">
+                <img class="path-company-logo path-company-logo-ukg" src="./logos/ukg-transparent.webp" alt="UKG">
+              </div>
+              <div class="path-card-dates" aria-label="Employment dates">
+                <span>OCT 2023</span><span>DEC 2025</span>
+              </div>
+              <small>Senior Data Engineer · Enterprise Data Platforms</small>
+            </div>
+            <div class="path-work-popover" aria-hidden="true"></div>
           </div>
-        </li>
 
-        <li data-path-type="experience">
-          <p class="when">Jan 2022 — Sep 2023</p>
-          <div>
-            <div class="timeline-title-row">
-              <h3>Analyst, Data Science &amp; Advanced Analytics <span>— Deloitte</span></h3>
-              <span class="path-tag">Experience</span>
+          <div class="path-node path-node-deloitte" data-path-type="experience" data-company="Deloitte" data-start="2022-01" data-end="2023-09" tabindex="0">
+            <div class="path-connector" aria-hidden="true"><span></span></div>
+            <div class="path-meta">
+              <span class="path-step">03</span>
+              <span class="path-date">JAN 2022 — SEP 2023</span>
             </div>
-            <p>
-              Pfizer Customers 360 on Databricks and Snowflake, automated DCR
-              workflows, classification models for test entities, and
-              strategy work for Peloton.
-            </p>
+            <div class="path-node-card">
+              <div class="path-company-logo-wrap">
+                <img class="path-company-logo" src="./logos/deloitte-transparent.webp" alt="Deloitte">
+              </div>
+              <div class="path-card-dates" aria-label="Employment dates">
+                <span>JAN 2022</span><span>SEP 2023</span>
+              </div>
+              <small>Analyst · Data Science &amp; Advanced Analytics</small>
+            </div>
+            <div class="path-work-popover" aria-hidden="true"></div>
           </div>
-        </li>
 
-        <li data-path-type="experience">
-          <p class="when">Aug 2020 — Dec 2021</p>
-          <div>
-            <div class="timeline-title-row">
-              <h3>Programmer Analyst, AI and Analytics <span>— Cognizant</span></h3>
-              <span class="path-tag">Experience</span>
+          <div class="path-node path-node-cognizant" data-path-type="experience" data-company="Cognizant" data-start="2020-08" data-end="2021-12" tabindex="0">
+            <div class="path-connector" aria-hidden="true"><span></span></div>
+            <div class="path-meta">
+              <span class="path-step">04</span>
+              <span class="path-date">AUG 2020 — DEC 2021</span>
             </div>
-            <p>
-              Bayer Product and Customer 360 on Reltio. AWS Glue and DynamoDB
-              ingestion, STTM mappings for 30+ sources across 100+ countries.
-            </p>
+            <div class="path-node-card">
+              <div class="path-company-logo-wrap">
+                <img class="path-company-logo path-company-logo-cognizant" src="./logos/cognizant-transparent.webp" alt="Cognizant">
+              </div>
+              <div class="path-card-dates" aria-label="Employment dates">
+                <span>AUG 2020</span><span>DEC 2021</span>
+              </div>
+              <small>Programmer Analyst · AI &amp; Analytics</small>
+            </div>
+            <div class="path-work-popover" aria-hidden="true"></div>
           </div>
-        </li>
+        </div>
 
-        <li data-path-type="education" class="is-hidden">
-          <p class="when">2016 — 2020</p>
-          <div>
-            <div class="timeline-title-row">
-              <h3>BTech in Computer Science and Engineering <span>— DIT University, India</span></h3>
-              <span class="path-tag">Education</span>
+        <div class="education-path" id="education-path" data-path-type="education" hidden>
+          <article class="education-node">
+            <span class="path-step">01</span>
+            <span class="path-date">2026 — 2027</span>
+            <div class="education-node-content">
+              <strong>Masters in Data Science</strong>
+              <small>Deakin University, Australia</small>
             </div>
-            <p>
-              Core computer science foundations, algorithms, data structures, database management systems, and software
-              engineering.
-            </p>
-          </div>
-        </li>
-
-        <li data-path-type="education" class="is-hidden">
-          <p class="when">2019</p>
-          <div>
-            <div class="timeline-title-row">
-              <h3>Diploma in Graphic Designing &amp; Animation <span>— Dreamzone School of Creative Studies,
-                  India</span></h3>
-              <span class="path-tag">Education</span>
+          </article>
+          <article class="education-node">
+            <span class="path-step">02</span>
+            <span class="path-date">2025 — 2026</span>
+            <div class="education-node-content">
+              <strong>Post Graduate Program in AI &amp; ML</strong>
+              <small>University of Texas at Austin, USA</small>
             </div>
-            <p>
-              Part-time certification in digital illustration, visual communication, composition, matte painting, and
-              animation foundations.
-            </p>
-          </div>
-        </li>
-      </ol>
+          </article>
+          <article class="education-node">
+            <span class="path-step">03</span>
+            <span class="path-date">2016 — 2020</span>
+            <div class="education-node-content">
+              <strong>BTech in Computer Science &amp; Engineering</strong>
+              <small>DIT University, India</small>
+            </div>
+          </article>
+          <article class="education-node">
+            <span class="path-step">04</span>
+            <span class="path-date">2019</span>
+            <div class="education-node-content">
+              <strong>Diploma in Graphic Designing &amp; Animation</strong>
+              <small>Dreamzone School of Creative Studies, India</small>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
     <section class="wrap writings">
@@ -1178,7 +1138,7 @@
     ↑
   </button>
 
-  <script src="./script.js?v=4"></script>
+  <script src="./script.js?v=5"></script>
 </body>
 
 </html>
