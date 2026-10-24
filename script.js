@@ -42,11 +42,20 @@ const STUDIO_WORKS = [
     source: "Behance",
     span: "sq",
   },
+  /*
   {
     src: "./studio/Modeling-shaurya-01.webp",
     title: "Photoshoot",
     tag: "Modeling",
     source: "Instagram",
+    span: "tall",
+  },
+  */
+  {
+    src: "./studio/UKG-BrandingCeremony.webp",
+    title: "UKG Rebranding Ceremony",
+    tag: "Stage",
+    source: "Event",
     span: "tall",
   },
 ];
@@ -387,11 +396,16 @@ function populatePathWorkCards() {
 }
 
 function setPathFilter(filter) {
+  const isEducation = filter === "education";
   const showExperience = filter === "experience" || filter === "all";
-  const showEducation = filter === "education" || filter === "all";
 
   if (careerSnake) careerSnake.hidden = !showExperience;
-  if (educationPath) educationPath.hidden = !showEducation;
+  if (educationPath) educationPath.hidden = !isEducation && filter !== "all";
+
+  if (filter === "all" && careerSnake && educationPath) {
+    careerSnake.hidden = false;
+    educationPath.hidden = false;
+  }
 }
 
 if (pathChips.length) {
@@ -543,3 +557,94 @@ pathNodes.forEach((node) => {
     }
   });
 });
+
+
+/* =========================================================
+   SELECTED WORK — motion layer only
+   Scoped exclusively to #work. Path logic above is untouched.
+   ========================================================= */
+(() => {
+  const workSection = document.getElementById("work");
+  if (!workSection) return;
+
+  const workItems = [...workSection.querySelectorAll(".project-timeline-item")];
+  const workCards = [...workSection.querySelectorAll(".project-featured")];
+  if (!workItems.length) return;
+
+  workItems.forEach((item, index) => {
+    item.style.setProperty("--work-index", index);
+  });
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const finePointer = window.matchMedia("(pointer: fine)");
+
+  const revealWork = () => {
+    workItems.forEach((item) => item.classList.add("is-work-visible"));
+  };
+
+  if (reduceMotion.matches || !("IntersectionObserver" in window)) {
+    revealWork();
+  } else {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-work-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+    );
+
+    workItems.forEach((item) => observer.observe(item));
+  }
+
+  if (reduceMotion.matches || !finePointer.matches) return;
+
+  const resetCard = (card) => {
+    card.style.setProperty("--work-x", "0px");
+    card.style.setProperty("--work-y", "0px");
+    card.style.setProperty("--work-rx", "0deg");
+    card.style.setProperty("--work-ry", "0deg");
+    card.style.setProperty("--spot-x", "50%");
+    card.style.setProperty("--spot-y", "50%");
+  };
+
+  workCards.forEach((card) => {
+    let frame = null;
+    let latestEvent = null;
+
+    card.addEventListener("pointermove", (event) => {
+      latestEvent = event;
+      if (frame) return;
+
+      frame = requestAnimationFrame(() => {
+        frame = null;
+        if (!latestEvent) return;
+
+        const rect = card.getBoundingClientRect();
+        const x = (latestEvent.clientX - rect.left) / rect.width - 0.5;
+        const y = (latestEvent.clientY - rect.top) / rect.height - 0.5;
+
+        card.style.setProperty("--work-x", `${(x * 7).toFixed(2)}px`);
+        card.style.setProperty("--work-y", `${(y * 5).toFixed(2)}px`);
+        card.style.setProperty("--work-rx", `${(-y * 3.2).toFixed(2)}deg`);
+        card.style.setProperty("--work-ry", `${(x * 4.2).toFixed(2)}deg`);
+        card.style.setProperty("--spot-x", `${((x + 0.5) * 100).toFixed(1)}%`);
+        card.style.setProperty("--spot-y", `${((y + 0.5) * 100).toFixed(1)}%`);
+      });
+    }, { passive: true });
+
+    card.addEventListener("pointerleave", () => {
+      if (frame) cancelAnimationFrame(frame);
+      frame = null;
+      latestEvent = null;
+      resetCard(card);
+    });
+
+    card.addEventListener("focusout", (event) => {
+      if (!card.contains(event.relatedTarget)) resetCard(card);
+    });
+  });
+})();

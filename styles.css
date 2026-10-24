@@ -2175,3 +2175,730 @@ textarea {
   .path-work-popover,
   .path-current::before { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
+
+
+/* =========================================================
+   SELECTED WORK — motion layer only
+   Scoped exclusively to #work. Path is untouched.
+   ========================================================= */
+#work .project-timeline-item {
+  opacity: 0;
+  transform: translate3d(0, 34px, 0) scale(0.985);
+  filter: blur(4px);
+  transition:
+    opacity 0.75s cubic-bezier(.2,.75,.2,1),
+    transform 0.75s cubic-bezier(.2,.75,.2,1),
+    filter 0.75s ease;
+  transition-delay: calc(var(--work-index, 0) * 70ms);
+}
+
+#work .project-timeline-item.is-work-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
+}
+
+#work .project-featured {
+  --work-x: 0px;
+  --work-y: 0px;
+  --work-rx: 0deg;
+  --work-ry: 0deg;
+  --spot-x: 50%;
+  --spot-y: 50%;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transform:
+    translate3d(var(--work-x), var(--work-y), 0)
+    perspective(1100px)
+    rotateX(var(--work-rx))
+    rotateY(var(--work-ry));
+  transform-style: preserve-3d;
+  transition:
+    transform 0.18s cubic-bezier(.2,.75,.2,1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+  will-change: transform;
+}
+
+#work .project-featured::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(
+      360px circle at var(--spot-x) var(--spot-y),
+      color-mix(in srgb, var(--ember) 18%, transparent),
+      transparent 68%
+    );
+  transition: opacity 0.25s ease;
+}
+
+#work .project-featured::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 18%,
+    rgba(255,255,255,.28) 48%,
+    transparent 72%
+  );
+  transform: translateX(-115%);
+}
+
+#work .project-featured:hover,
+#work .project-featured:focus-within {
+  border-color: color-mix(in srgb, var(--ember) 45%, var(--line));
+  box-shadow: 0 28px 60px -30px rgba(23, 21, 18, 0.6);
+}
+
+#work .project-featured:hover::before,
+#work .project-featured:focus-within::before {
+  opacity: 1;
+}
+
+#work .project-featured:hover::after,
+#work .project-featured:focus-within::after {
+  opacity: 1;
+  animation: work-sheen 0.8s cubic-bezier(.2,.7,.2,1) forwards;
+}
+
+#work .project-featured > * {
+  position: relative;
+  z-index: 1;
+}
+
+#work .project-index {
+  transition: transform 0.45s cubic-bezier(.2,.75,.2,1), opacity 0.35s ease;
+}
+
+#work .project-timeline-item.is-work-visible .project-index {
+  transform: translateX(0);
+}
+
+#work .project-featured .project-left-brand,
+#work .project-featured .project-main,
+#work .project-featured .project-right-brand {
+  transition: transform 0.45s cubic-bezier(.2,.75,.2,1), opacity 0.45s ease;
+}
+
+#work .project-featured .project-left-brand {
+  transform: translateX(-12px);
+}
+
+#work .project-featured .project-right-brand {
+  transform: translateX(12px);
+}
+
+#work .project-featured .project-main {
+  transform: translateY(10px);
+}
+
+#work .project-timeline-item.is-work-visible .project-featured .project-left-brand,
+#work .project-timeline-item.is-work-visible .project-featured .project-main,
+#work .project-timeline-item.is-work-visible .project-featured .project-right-brand {
+  transform: translate(0, 0);
+}
+
+#work .project-featured .logo-small,
+#work .project-featured .logo-big,
+#work .project-featured .logo-amex,
+#work .project-featured .logo-ukg,
+#work .project-featured .logo-pfizer,
+#work .project-featured .logo-bayer,
+#work .project-featured .logo-peloton {
+  transition: transform 0.45s cubic-bezier(.2,.75,.2,1), filter 0.35s ease;
+}
+
+#work .project-featured:hover .logo-small,
+#work .project-featured:hover .logo-big,
+#work .project-featured:hover .logo-amex,
+#work .project-featured:hover .logo-ukg,
+#work .project-featured:hover .logo-pfizer,
+#work .project-featured:hover .logo-bayer,
+#work .project-featured:hover .logo-peloton {
+  transform: translateZ(18px) scale(1.08) rotate(-2deg);
+  filter: saturate(1.08);
+}
+
+#work .project-featured .tag {
+  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#work .project-featured:hover .tag,
+#work .project-featured:focus-within .tag {
+  transform: translateY(-3px);
+  background-color: color-mix(in srgb, var(--ember) 13%, transparent);
+  border-color: color-mix(in srgb, var(--ember) 55%, var(--line));
+}
+
+#work .project-featured .year {
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#work .project-featured:hover .year,
+#work .project-featured:focus-within .year {
+  transform: translateY(-4px);
+  color: var(--ember);
+}
+
+#work .project-featured .project-details-link {
+  position: relative;
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(.2,.75,.2,1), color 0.25s ease;
+}
+
+#work .project-featured:hover .project-details-link,
+#work .project-featured:focus-within .project-details-link {
+  transform: translateX(5px);
+  color: var(--ink);
+}
+
+@keyframes work-sheen {
+  from { transform: translateX(-115%); }
+  to { transform: translateX(115%); }
+}
+
+@media (max-width: 799px) {
+  #work .project-timeline-item {
+    transform: translate3d(0, 24px, 0) scale(0.99);
+  }
+
+  #work .project-featured:hover,
+  #work .project-featured:focus-within {
+    transform: translate3d(0, -3px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #work .project-timeline-item,
+  #work .project-featured,
+  #work .project-featured > *,
+  #work .project-featured .logo-small,
+  #work .project-featured .logo-big,
+  #work .project-featured .logo-amex,
+  #work .project-featured .logo-ukg,
+  #work .project-featured .logo-pfizer,
+  #work .project-featured .logo-bayer,
+  #work .project-featured .logo-peloton,
+  #work .project-featured .tag,
+  #work .project-featured .year,
+  #work .project-featured .project-details-link {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  #work .project-timeline-item {
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   PATH — selected-work card micro-interactions
+   ========================================================= */
+.path-work-popover .path-project-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transform: translateY(0) scale(1);
+  box-shadow: 0 0 0 rgba(23, 21, 18, 0);
+  transition:
+    transform 0.28s cubic-bezier(.2,.75,.2,1),
+    border-color 0.25s ease,
+    box-shadow 0.3s ease,
+    background-color 0.25s ease;
+}
+
+/* Thin accent line that reveals itself from the center on hover/focus. */
+.path-work-popover .path-project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 9%;
+  right: 9%;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--ember);
+  transform: scaleX(0);
+  transform-origin: center;
+  opacity: 0;
+  transition:
+    transform 0.32s cubic-bezier(.2,.75,.2,1),
+    opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.path-work-popover .path-project-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    180px circle at 50% 0%,
+    color-mix(in srgb, var(--ember) 10%, transparent),
+    transparent 70%
+  );
+  transition: opacity 0.3s ease;
+}
+
+.path-work-popover .path-project-card:hover,
+.path-work-popover .path-project-card:focus-visible {
+  transform: translateY(-4px) scale(1.012);
+  border-color: color-mix(in srgb, var(--ember) 48%, var(--line));
+  background: color-mix(in srgb, var(--paper) 78%, var(--ember));
+  box-shadow: 0 14px 28px -22px rgba(23, 21, 18, 0.72);
+}
+
+.path-work-popover .path-project-card:hover::before,
+.path-work-popover .path-project-card:focus-visible::before {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.path-work-popover .path-project-card:hover::after,
+.path-work-popover .path-project-card:focus-visible::after {
+  opacity: 1;
+}
+
+.path-work-popover .path-project-logo {
+  position: relative;
+  z-index: 1;
+  transition:
+    transform 0.3s cubic-bezier(.2,.75,.2,1),
+    filter 0.25s ease;
+}
+
+.path-work-popover .path-project-card:hover .path-project-logo,
+.path-work-popover .path-project-card:focus-visible .path-project-logo {
+  transform: translateZ(0) scale(1.1) rotate(-2deg);
+  filter: saturate(1.08);
+}
+
+.path-work-popover .path-project-copy {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s cubic-bezier(.2,.75,.2,1);
+}
+
+.path-work-popover .path-project-card:hover .path-project-copy,
+.path-work-popover .path-project-card:focus-visible .path-project-copy {
+  transform: translateX(3px);
+}
+
+.path-work-popover .path-project-copy strong {
+  transition: color 0.25s ease;
+}
+
+.path-work-popover .path-project-card:hover .path-project-copy strong,
+.path-work-popover .path-project-card:focus-visible .path-project-copy strong {
+  color: var(--ink);
+}
+
+.path-work-popover .path-project-arrow {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  transition:
+    transform 0.3s cubic-bezier(.2,.75,.2,1),
+    color 0.25s ease;
+}
+
+.path-work-popover .path-project-card:hover .path-project-arrow,
+.path-work-popover .path-project-card:focus-visible .path-project-arrow {
+  transform: translate(3px, -3px) scale(1.12);
+  color: var(--ember);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .path-work-popover .path-project-card,
+  .path-work-popover .path-project-card::before,
+  .path-work-popover .path-project-card::after,
+  .path-work-popover .path-project-logo,
+  .path-work-popover .path-project-copy,
+  .path-work-popover .path-project-arrow {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* =========================================================
+   PATH — experience card top-line reveal
+   ========================================================= */
+.path-node-card::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--ink);
+  transform: scaleX(0) rotate(-0.35deg);
+  transform-origin: center;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.42s cubic-bezier(.2,.75,.2,1),
+    opacity 0.22s ease;
+}
+
+.path-node:hover .path-node-card::before,
+.path-node:focus-visible .path-node-card::before,
+.path-node.is-active .path-node-card::before {
+  transform: scaleX(1) rotate(-0.35deg);
+  opacity: 0.9;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .path-node-card::before {
+    transition: none !important;
+  }
+}
+
+/* =========================================================
+   SELECTED PROJECT — hover top-line reveal
+   Keeps the mouse-following spotlight on ::before
+   ========================================================= */
+
+   #work .project-featured {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Top hover line — separate from the spotlight */
+  #work .project-featured .project-main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--ember);
+    transform: scaleX(0);
+    transform-origin: center;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+    transition:
+      transform 0.42s cubic-bezier(.2,.75,.2,1),
+      opacity 0.2s ease;
+  }
+  
+  #work .project-featured:hover .project-main::before,
+  #work .project-featured:focus-within .project-main::before {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+
+@media (prefers-reduced-motion: reduce) {
+  #work .project-featured::before {
+    transition: none !important;
+  }
+}
+
+@media (max-width: 700px) {
+
+  /* =====================================================
+     PATH — MOBILE STACK
+     Step left | Date + Card right
+     ===================================================== */
+
+  .career-board {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 2.2rem;
+  }
+
+  .career-snake {
+    width: 100%;
+    min-height: 0;
+    padding: 4.2rem 0.75rem 1.5rem;
+  }
+
+  /* Each experience becomes:
+     [01] [DATE]
+          [CARD]
+  */
+  .path-node,
+  .path-node-ey,
+  .path-node-ukg,
+  .path-node-deloitte,
+  .path-node-cognizant {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    min-height: 0;
+    margin: 0 0 1.4rem;
+    padding: 0;
+
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    column-gap: 10px;
+    row-gap: 0;
+    align-items: start;
+  }
+
+  /* =====================================================
+     META BECOMES GRID CONTENT
+     ===================================================== */
+
+  .path-meta,
+  .path-node-ey .path-meta,
+  .path-node-ukg .path-meta,
+  .path-node-deloitte .path-meta,
+  .path-node-cognizant .path-meta {
+    position: static;
+    width: auto;
+    height: auto;
+    transform: none;
+    display: contents;
+  }
+
+  /* Number — LEFT COLUMN */
+  .path-step,
+  .path-node-ukg .path-step,
+  .path-node-cognizant .path-step {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+
+    position: static;
+    align-self: start;
+    justify-self: center;
+
+    width: 1.9rem;
+    height: 1.9rem;
+    margin-top: 0.05rem;
+
+    transform: none;
+    flex: none;
+  }
+
+  /* Date — RIGHT COLUMN, ABOVE CARD */
+  .path-date,
+  .path-node-ey .path-date,
+  .path-node-ukg .path-date,
+  .path-node-deloitte .path-date,
+  .path-node-cognizant .path-date {
+    grid-column: 2;
+    grid-row: 1;
+
+    position: static;
+    left: auto;
+    right: auto;
+    bottom: auto;
+
+    display: block;
+    width: 100%;
+    min-width: 0;
+
+    margin: 0 0 0.55rem;
+
+    transform: none !important;
+
+    white-space: normal;
+    overflow: visible;
+
+    color: var(--muted);
+    font-size: 0.58rem;
+    line-height: 1.25;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* =====================================================
+     CARD — RIGHT COLUMN
+     ===================================================== */
+
+  .path-node-card,
+  .path-node-ukg .path-node-card,
+  .path-node-cognizant .path-node-card {
+    grid-column: 2;
+    grid-row: 2;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 105px;
+
+    margin: 0;
+
+    transform: none;
+    transform-origin: center;
+
+    overflow: visible;
+  }
+
+  /* =====================================================
+     COMPANY LOGO
+     ===================================================== */
+
+  .path-company-logo-wrap {
+    padding-top: 0.75rem;
+  }
+
+  /* =====================================================
+     CURRENT PILL
+     ===================================================== */
+
+  .path-current {
+    top: -0.1rem;
+    right: 0.6rem;
+  }
+
+  /* =====================================================
+     CONNECTOR — NOT NEEDED ON MOBILE
+     ===================================================== */
+
+  .path-connector {
+    display: none;
+  }
+
+  /* =====================================================
+     WORK PREVIEW
+     Keep it out of the normal layout flow
+     ===================================================== */
+
+  .path-work-popover,
+  .path-node-ey .path-work-popover,
+  .path-node-ukg .path-work-popover,
+  .path-node-deloitte .path-work-popover,
+  .path-node-cognizant .path-work-popover {
+    position: absolute;
+
+    left: 0;
+    right: auto;
+    top: calc(100% + 0.9rem);
+    bottom: auto;
+
+    width: 100%;
+    max-width: 100%;
+    max-height: none;
+
+    margin: 0;
+
+    transform: translateY(0.5rem);
+  }
+
+  .path-node:hover .path-work-popover,
+  .path-node:focus-visible .path-work-popover,
+  .path-node.is-active .path-work-popover {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 700px) {
+
+  /* =====================================================
+     EDUCATION — MOBILE
+     Step left | Date + Card right
+     ===================================================== */
+
+  .education-path {
+    display: flex;
+    flex-direction: column;
+    gap: 1.35rem;
+    padding: 1rem 0.75rem 2rem;
+  }
+
+  .education-node {
+    position: relative;
+
+    width: calc(100% - 3rem);
+    margin-left: 3rem;
+
+    min-height: 112px;
+    padding: 1.1rem 1rem 1rem;
+
+    box-sizing: border-box;
+  }
+
+  /* -----------------------------------------------------
+     NUMBER — LEFT OF CARD
+     ----------------------------------------------------- */
+
+  .education-node .path-step {
+    position: absolute;
+
+    top: 0.85rem;
+    left: -2.65rem;
+    right: auto;
+
+    width: 1.9rem;
+    height: 1.9rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+
+    transform: none;
+
+    z-index: 3;
+  }
+
+  /* -----------------------------------------------------
+     DATE — INSIDE CARD, TOP RIGHT
+     ----------------------------------------------------- */
+
+  .education-node .path-date {
+    position: absolute;
+
+    top: 1.15rem;
+    right: 1rem;
+    left: auto;
+    bottom: auto;
+
+    width: auto;
+    max-width: calc(100% - 4rem);
+
+    margin: 0;
+
+    transform: none !important;
+
+    white-space: nowrap;
+    overflow: visible;
+
+    font-size: 0.58rem;
+    line-height: 1.2;
+    letter-spacing: 0.07em;
+
+    z-index: 2;
+  }
+
+  /* -----------------------------------------------------
+     CONTENT
+     ----------------------------------------------------- */
+
+  .education-node-content {
+    padding-top: 2.45rem;
+    min-width: 0;
+  }
+
+  .education-node-content strong {
+    font-size: 1rem;
+    line-height: 1.15;
+  }
+
+  .education-node-content small {
+    max-width: 100%;
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+
+  /* Keep hover motion subtle on touch screens */
+  .education-node:hover {
+    transform: translateY(-2px);
+  }
+}
